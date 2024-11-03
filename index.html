@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Untitled</title>
+  
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposal</title>
+    <style>
+        body {
+            background-color: #ffeb3b; /* Yellow background */
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 50px;
+            overflow: hidden; /* Prevents scrollbars from appearing */
+            position: relative; /* For positioning hearts */
+        }
+        h1 {
+            font-size: 2.5em;
+            animation: wobbleIn 1s forwards; /* Wobble effect */
+            opacity: 1; /* Keep it visible */
+        }
+        @keyframes wobbleIn {
+            0% {
+                transform: translateY(-50px) rotate(0deg); /* Start above */
+            }
+            50% {
+                transform: translateY(0) rotate(10deg); /* Wobble to the right */
+            }
+            60% {
+                transform: translateY(0) rotate(-10deg); /* Wobble to the left */
+            }
+            70% {
+                transform: translateY(0) rotate(5deg); /* Wobble to the right */
+            }
+            100% {
+                transform: translateY(0) rotate(0deg); /* Settle in place */
+            }
+        }
+        .buttons {
+            margin-top: 30px;
+        }
+        button {
+            border: 2px solid #fff;
+            border-radius: 5px;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            cursor: pointer;
+            margin: 10px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        #yesButton {
+            background-color: #4CAF50; /* Green */
+            color: white;
+        }
+        #friendsButton {
+            background-color: #000; /* Black */
+            color: white;
+        }
+        #noButton {
+            background-color: #f44336; /* Red */
+            color: white;
+        }
+        button:hover {
+            transform: translateY(-5px); /* Bouncing effect */
+        }
+        .response {
+            margin-top: 30px;
+            font-size: 1.5em;
+            opacity: 0; /* Start hidden */
+            animation: fadeIn 1s forwards; /* Fade-in effect */
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .heart {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-color: red;
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            animation: float 5s infinite;
+        }
+        @keyframes float {
+            0% {
+                transform: translateY(100vh);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Simran, Will you be my FOREVER WALI GIRLFRIEND?</h1>
+
+    <div class="buttons">
+        <button id="yesButton">Yes</button>
+        <button id="friendsButton">Let's be friends</button>
+        <button id="noButton">No</button>
+    </div>
+
+    <div class="response" id="responseText"></div>
+
+    <script>
+        document.getElementById('yesButton').onclick = function() {
+            showResponse("PAKKA no GHOSTING and CHILAUNGA toh bilkul nahi");
+        };
+
+        document.getElementById('friendsButton').onclick = function() {
+            showResponse("SAD YAAR");
+        };
+
+        document.getElementById('noButton').onclick = function() {
+            showResponse("FINE");
+        };
+
+        function showResponse(message) {
+            const responseText = document.getElementById('responseText');
+            responseText.innerText = message;
+            responseText.style.opacity = 0; // Reset opacity for fade-in effect
+            responseText.style.animation = 'none'; // Reset animation
+            responseText.offsetHeight; // Trigger reflow
+            responseText.style.animation = 'fadeIn 1s forwards'; // Apply fade-in animation
+                      responseText.style.opacity = 1; // Make it visible
+        }
+
+        // Function to create floating hearts
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.style.left = Math.random() * 100 + 'vw'; // Random horizontal position
+            document.body.appendChild(heart);
+
+            // Remove heart after animation
+            heart.addEventListener('animationend', () => {
+                heart.remove();
+            });
+        }
+
+        // Create hearts at intervals
+        setInterval(createHeart, 500); // Create a heart every 500 milliseconds
+    </script>
+
+</body>
+</html>
+<!-- partial -->
+  
+</body>
+</html>
